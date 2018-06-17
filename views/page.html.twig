@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+    {% block main %}
+    
+      {% for item in items %}
+      <div class="panel panel-default">
+        <div class="panel-body">
+    
+          <button type="button" class="btn btn-default btn-sm pull-right">
+            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+          </button>
+          
+          <button type="button" class="btn btn-default btn-sm pull-right">
+            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+          </button>
+          
+          <div class="item-rank">{{ loop.index }}.</div>
+          <div class="item-text">
+            <a href="{{ item.url }}">{{ item.title|e }}</a><br>
+            <small>
+              {{ pluralize(item.score, '1 point', '%d points') }} by {{ item.by }} 
+              {{ item.time|time_diff }} | {{ pluralize(item.kids|length, '1 comment', '%d comments') }}
+            </small>
+          </div>
+          
+        </div>
+      </div>
+      {% else %}
+        No items have been found.
+      {% endfor %}
+    
+    {% endblock %}

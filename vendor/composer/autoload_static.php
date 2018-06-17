@@ -12,6 +12,15 @@ class ComposerStaticInit7aaad1a25ed45a5383994f5430ea8c79
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'VanPattenMedia\\Twig\\' => 20,
+        ),
+        'T' => 
+        array (
+            'Twig\\Extensions\\' => 16,
+            'Twig\\' => 5,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -31,6 +40,18 @@ class ComposerStaticInit7aaad1a25ed45a5383994f5430ea8c79
     );
 
     public static $prefixDirsPsr4 = array (
+        'VanPattenMedia\\Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vanpattenmedia/twig-pluralize-extension/src',
+        ),
+        'Twig\\Extensions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/extensions/src',
+        ),
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -74,6 +95,17 @@ class ComposerStaticInit7aaad1a25ed45a5383994f5430ea8c79
     );
 
     public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_Extensions_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/extensions/lib',
+            ),
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
         'P' => 
         array (
             'Pimple' => 
