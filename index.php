@@ -24,10 +24,6 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 });
 
 $app->get('/', function () use ($app) {
-    return 'Hacker News';
-});
-
-$app->get('/news', function () use ($app) {
     
     $sql = "SELECT
                 `id`, `username` AS `by`, `type`, `timestamp` AS `time`, `title`, `score`,
