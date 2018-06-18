@@ -16,10 +16,10 @@
           
           <div class="item-rank">{{ loop.index }}.</div>
           <div class="item-text">
-            <a href="{{ item.url }}">{{ item.title|e }}</a><br>
+            <a href="{{ item.url }}">{{ item.title }}</a><br>
             <small>
               {{ pluralize(item.score, '1 point', '%d points') }} by {{ item.by }} 
-              {{ item.time|time_diff }} | {{ pluralize(item.kids|length, '1 comment', '%d comments') }}
+              {{ item.time|time_diff }} | {{ pluralize(item.comments, '1 comment', '%d comments') }}
             </small>
           </div>
           

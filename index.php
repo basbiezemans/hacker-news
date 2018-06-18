@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\Yaml\Yaml;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 $app = new Silex\Application();
@@ -8,7 +10,11 @@ $app = new Silex\Application();
 $app['debug'] = true;
 
 $app->register(new Silex\Provider\TwigServiceProvider(), [
-    'twig.path' => __DIR__ . '/views',
+    'twig.path' => __DIR__ . '/views'
+]);
+
+$app->register(new Silex\Provider\DoctrineServiceProvider(), [
+    'db.options' => Yaml::parse(file_get_contents(__DIR__ . '/config/db-options.yml'))
 ]);
 
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
@@ -22,25 +28,29 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/news', function () use ($app) {
-    return $app['twig']->render('page.html.twig', [
-        'items' => [
-            [
-                'by' => 'dhouston',
-                'descendants' => 71,
-                'id' => 8863,
-                'kids' => [
-                    9224, 8952, 8917, 8884, 8887, 8943, 8869, 8940, 8908, 8958, 9005, 8873, 9671, 
-                    9067, 9055, 8865, 8881, 8872, 8955, 10403, 8903, 8928, 9125, 8998, 8901, 8902, 
-                    8907, 8894, 8870, 8878, 8980, 8934, 8876
-                ],
-                'score' => 104,
-                'time' => 1175714200,
-                'title' => 'My YC app: Dropbox - Throw away your USB drive',
-                'type' => 'story',
-                'url' => 'http://www.getdropbox.com/u/2/screencast.html'
-            ]
-        ]
-    ]);
+    
+    $sql = "SELECT
+                `id`, `username` AS `by`, `type`, `timestamp` AS `time`, `title`, `score`,
+                IFNULL(`url`, '') AS `url`,
+                IFNULL(`content`, '') AS `text`,
+                IFNULL(`descendants`, 0) AS `descendants`,
+                (
+                    SELECT COUNT(`id`) 
+                    FROM `items` AS `child` 
+                    WHERE `child`.`parent_id` = `parent`.`id`
+                
+                ) AS `comments`
+            FROM
+                `items` AS `parent`
+            WHERE
+                `parent_id` IS NULL
+            ORDER BY
+                `score` DESC";
+    
+    $items = $app['db']->fetchAll($sql);
+    
+    return $app['twig']->render('page.html.twig', ['items' => $items]);
+    
 })->bind('items');
 
 $app->run();
