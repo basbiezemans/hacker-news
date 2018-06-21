@@ -3,6 +3,7 @@
     {% block main %}
     
       {% for item in items %}
+      {% set comments_url = app.url_generator.generate('comments', { item_id: item.id }) %}
       <div class="panel panel-default">
         <div class="panel-body">
     
@@ -16,11 +17,11 @@
           
           <div class="item-rank">{{ loop.index }}.</div>
           <div class="item-text">
-            <a href="{{ item.url }}">{{ item.title }}</a><br>
+            <a href="{{ item.url is empty ? comments_url : item.url }}">{{ item.title }}</a><br>
             <small>
               {{ pluralize(item.score, '1 point', '%d points') }} by {{ item.username }} 
               {{ item.timestamp|time_diff }} | 
-              <a href="{{ app.url_generator.generate('comments', { item_id: item.id }) }}">{{ pluralize(item.descendants, '1 comment', '%d comments') }}</a>
+              <a href="{{ comments_url }}">{{ pluralize(item.descendants, '1 comment', '%d comments') }}</a>
             </small>
           </div>
           
