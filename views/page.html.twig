@@ -19,7 +19,8 @@
             <a href="{{ item.url }}">{{ item.title }}</a><br>
             <small>
               {{ pluralize(item.score, '1 point', '%d points') }} by {{ item.by }} 
-              {{ item.time|time_diff }} | {{ pluralize(item.comments, '1 comment', '%d comments') }}
+              {{ item.time|time_diff }} | 
+              <a href="{{ app.url_generator.generate('comments', { item_id: item.id }) }}">{{ pluralize(item.comments, '1 comment', '%d comments') }}</a>
             </small>
           </div>
           

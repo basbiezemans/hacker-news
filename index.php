@@ -3,6 +3,7 @@
 use Symfony\Component\Yaml\Yaml;
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/functions.php';
 
 $app = new Silex\Application();
 
@@ -48,5 +49,7 @@ $app->get('/', function () use ($app) {
     return $app['twig']->render('page.html.twig', ['items' => $items]);
     
 })->bind('items');
+
+$app->mount('/comments/{item_id}', include __DIR__ . '/src/comments.php');
 
 $app->run();
