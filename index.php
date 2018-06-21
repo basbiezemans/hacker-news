@@ -24,31 +24,7 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
-$app->get('/', function () use ($app) {
-    
-    $sql = "SELECT
-                `id`, `username` AS `by`, `type`, `timestamp` AS `time`, `title`, `score`,
-                IFNULL(`url`, '') AS `url`,
-                IFNULL(`content`, '') AS `text`,
-                IFNULL(`descendants`, 0) AS `descendants`,
-                (
-                    SELECT COUNT(`id`) 
-                    FROM `items` AS `child` 
-                    WHERE `child`.`parent_id` = `parent`.`id`
-                
-                ) AS `comments`
-            FROM
-                `items` AS `parent`
-            WHERE
-                `parent_id` IS NULL
-            ORDER BY
-                `score` DESC";
-    
-    $items = $app['db']->fetchAll($sql);
-    
-    return $app['twig']->render('page.html.twig', ['items' => $items]);
-    
-})->bind('items');
+$app->mount('/', include __DIR__ . '/src/items.php');
 
 $app->mount('/comments/{item_id}', include __DIR__ . '/src/comments.php');
 
