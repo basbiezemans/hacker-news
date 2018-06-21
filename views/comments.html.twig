@@ -13,6 +13,8 @@
           </small>
         </p>
         
+        {% if story.content is not empty %}{{ story.content|raw }}{% endif %}
+        
         {% for comment in comments %}
           <div class="pl-{{ comment.level }}">
             <hr>
