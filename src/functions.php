@@ -3,14 +3,14 @@
 // Returns a tree structure with children grouped by parent_id
 function tree(array $items, int $parent_id = 0, int $level = 1) : array {
     $branch = [];
-    foreach ($items as $item) {
-        if ($item['parent_id'] == $parent_id) {
-            $item['level'] = $level;
-            $children = tree($items, $item['id'], $level + 1);
+    foreach ($items as $node) {
+        if ($node['parent_id'] == $parent_id) {
+            $node['level'] = $level;
+            $children = tree($items, $node['id'], $level + 1);
             if ($children) {
-                $item['children'] = $children;
+                $node['children'] = $children;
             }
-            $branch[] = $item;
+            $branch[] = $node;
         }
     }
     return $branch;
