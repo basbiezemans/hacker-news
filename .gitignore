@@ -1,0 +1,8 @@
+# Apache Web Server
+.htaccess
+
+# Parameters
+*.yml
+
+# Managed by Composer
+vendor/
