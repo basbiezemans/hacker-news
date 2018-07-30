@@ -5,6 +5,7 @@
         "vanpattenmedia/twig-pluralize-extension": "^1.0",
         "twig/extensions": "^1.5",
         "doctrine/dbal": "~2.5",
-        "symfony/yaml": "~4.1"
+        "symfony/yaml": "~4.1",
+        "mgerarts/hn-api-php": "^1.0"
     }
 }
