@@ -19,10 +19,16 @@ Website inspired by Y Combinator's [Hacker News](https://news.ycombinator.com/ne
 ## Installation
 
 1. Clone or download this repository to your web server.
-2. Create a new MySQL database named `hackernews`.
-3. Use the SQL dump in the `/data` folder to populate the database.
-4. Edit the file `/config/db-options.yml-example` and rename it to `db-options.yml`.
-5. Configure your [web server](https://silex.symfony.com/doc/2.0/web_servers.html) to redirect all requests to `index.php` in the webroot.
+
+2. Install the required packages with Composer.
+
+3. Create a new MySQL database named `hackernews`.
+
+4. Use the SQL dump in the `/data` folder to populate the database.
+
+5. Edit the file `/config/db-options.yml-example` and rename it to `db-options.yml`.
+
+6. Configure your [web server](https://silex.symfony.com/doc/2.0/web_servers.html) to redirect all requests to `index.php` in the webroot.
 
 
 
