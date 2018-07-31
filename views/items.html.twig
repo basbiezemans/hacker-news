@@ -21,7 +21,7 @@
             <small>
               {{ pluralize(item.score, '1 point', '%d points') }} by {{ item.by }} 
               {{ item.time|time_diff }} | 
-              <a href="{{ comments_url }}">{{ pluralize(item.descendants, '1 comment', '%d comments') }}</a>
+              <a href="{{ comments_url }}">{{ pluralize(item.descendants|default(0), '1 comment', '%d comments') }}</a>
             </small>
           </div>
           
