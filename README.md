@@ -1,6 +1,6 @@
 # Hacker News
 
-Website inspired by Y Combinator's [Hacker News](https://news.ycombinator.com/news).
+Website inspired by Y Combinator's [Hacker News](https://news.ycombinator.com/news). It connects with the official [Hacker News API](https://github.com/HackerNews/API).
 
 
 
@@ -8,13 +8,12 @@ Website inspired by Y Combinator's [Hacker News](https://news.ycombinator.com/ne
 
 * Web server like Apache or Nginx
 
-* PHP 7
+* PHP >= 7.1
 
 * Composer
 
-* MySQL / MariaDB
-
   
+
 
 ## Installation
 
@@ -22,13 +21,8 @@ Website inspired by Y Combinator's [Hacker News](https://news.ycombinator.com/ne
 
 2. Install the required packages with Composer.
 
-3. Create a new MySQL database named `hackernews`.
+3. Configure your [web server](https://silex.symfony.com/doc/2.0/web_servers.html) to redirect all requests to `index.php` in the webroot.
 
-4. Use the SQL dump in the `/data` folder to populate the database.
-
-5. Edit the file `/config/db-options.yml-example` and rename it to `db-options.yml`.
-
-6. Configure your [web server](https://silex.symfony.com/doc/2.0/web_servers.html) to redirect all requests to `index.php` in the webroot.
 
 
 
