@@ -1,5 +1,0 @@
-driver:   pdo_mysql
-host:     localhost
-dbname:   hackernews
-user:     ***
-password: ***
