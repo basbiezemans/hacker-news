@@ -83,12 +83,12 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{{ app.url_generator.generate('items') }}">New</a></li>
-        <li><a href="#">Comments</a></li>
-        <li><a href="#">Show</a></li>
-        <li><a href="#">Ask</a></li>
-        <li><a href="#">Jobs</a></li>
-        <li><a href="#">Submit</a></li>
+        <li{% if '/new' in url %} class="active"{% endif %}><a href="{{ app.url_generator.generate('items', {'type': 'new'}) }}">New</a></li>
+        <li{% if '/best' in url %} class="active"{% endif %}><a href="{{ app.url_generator.generate('items', {'type': 'best'}) }}">Best</a></li>
+        <li{% if '/show' in url %} class="active"{% endif %}><a href="{{ app.url_generator.generate('items', {'type': 'show'}) }}">Show</a></li>
+        <li{% if '/ask' in url %} class="active"{% endif %}><a href="{{ app.url_generator.generate('items', {'type': 'ask'}) }}">Ask</a></li>
+        <li{% if '/jobs' in url %} class="active"{% endif %}><a href="{{ app.url_generator.generate('items', {'type': 'jobs'}) }}">Jobs</a></li>
+        <!-- <li><a href="#">Submit</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
