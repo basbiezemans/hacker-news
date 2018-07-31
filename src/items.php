@@ -1,21 +1,20 @@
 <?php
 
+use HackerNewsApi\Service\HackerNewsServiceClient;
+use HackerNewsApi\Client\HackerNewsClient;
+
 $items = $app['controllers_factory'];
 
 $items->get('/', function () use ($app) {
+
+    $client = new HackerNewsClient(HackerNewsServiceClient::create());
+    $page_limit = 30;
+    $list = array_slice($client->getShowStories(), 0, $page_limit);
+    $items = [];
     
-    $sql = "SELECT `id`, `username`, `type`, `timestamp`, `title`, `score`,
-                IFNULL(`url`, '') AS `url`,
-                IFNULL(`descendants`, 0) AS `descendants`
-            FROM
-                `items`
-            WHERE
-                `parent_id` IS NULL
-            ORDER BY
-                `timestamp`, `score` DESC
-            LIMIT 30";
-    
-    $items = $app['db']->fetchAll($sql);
+    foreach ($list as $id) {
+        $items[] = $client->getItem($id);
+    }
     
     return $app['twig']->render('items.html.twig', ['items' => $items]);
     

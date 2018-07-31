@@ -19,8 +19,8 @@
           <div class="item-text">
             <a href="{{ item.url is empty ? comments_url : item.url }}">{{ item.title }}</a><br>
             <small>
-              {{ pluralize(item.score, '1 point', '%d points') }} by {{ item.username }} 
-              {{ item.timestamp|time_diff }} | 
+              {{ pluralize(item.score, '1 point', '%d points') }} by {{ item.by }} 
+              {{ item.time|time_diff }} | 
               <a href="{{ comments_url }}">{{ pluralize(item.descendants, '1 comment', '%d comments') }}</a>
             </small>
           </div>
