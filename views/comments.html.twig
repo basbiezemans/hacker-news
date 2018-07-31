@@ -58,7 +58,7 @@
           var hidden = 1;
           var comment = $('#comment-' + index);
           var node = $('#node-' + index);
-          var children = node.find('div.children');
+          var children = node.find('div.children:first');
           // Toggle visibility of comment
           comment.toggle();
           // Toggle visibility of children
