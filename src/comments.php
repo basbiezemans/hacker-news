@@ -26,7 +26,7 @@ $comments->get('/', function ($item_id) use ($app) {
             }
             return $children;
         }
-    };
+    }
 
     $items = kids($story);
 
