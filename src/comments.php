@@ -12,7 +12,7 @@ $comments->get('/', function ($item_id) use ($app) {
     
     // Returns all children of a parent node, recursively.
     // Items are retrieved from the Hacker News API 
-    function kids($parent) {
+    function kids($parent, $level = 1) {
         $kids = $parent->getKids();
         if (count($kids) == 0) {
             return [];
@@ -23,22 +23,16 @@ $comments->get('/', function ($item_id) use ($app) {
                 $item = $client->getItem($id);
                 $dead = ($item->isDead() || $item->isDeleted());
                 if (!$dead) {
-                    $children = array_merge($children, [$item], kids($item));
+                    // Add an indentation level as a dynamic property
+                    $item->level = $level;
+                    $children = array_merge($children, [$item], kids($item, $level + 1));
                 }
             }
             return $children;
         }
     }
 
-    $items = kids($story);
-
-    // Sort an array of Item objects by time in ascending order 
-    usort($items, function ($a, $b) {
-        return ($a->getTime() <=> $b->getTime());
-    });
-
-    // Create a sorted array of comments (items) with indentation levels
-    $comments = flatten(tree($items, $item_id));
+    $comments = kids($story);
 
     return $app['twig']->render('comments.html.twig', ['story' => $story, 'comments' => $comments]);
     
