@@ -23,9 +23,8 @@ $comments->get('/', function ($item_id) use ($app) {
                 $item = $client->getItem($id);
                 $dead = ($item->isDead() || $item->isDeleted());
                 if (!$dead) {
-                    // Add an indentation level as a dynamic property
-                    $item->level = $level;
-                    $children = array_merge($children, [$item], kids($item, $level + 1));
+                    $pair = [$item, $level];
+                    $children = array_merge($children, [$pair], kids($item, $level + 1));
                 }
             }
             return $children;

@@ -16,22 +16,24 @@
         {% if story.text is not empty %}{{ story.text|raw }}{% endif %}
         
         {% set parent = 1 %}
-        {% for comment in comments %}
-          {% set node = (comment.level == 1) ? 'parent' : 'child' %}
+        {% for pair in comments %}
+          {% set comment = pair|first %}
+          {% set level = pair|last %}
+          {% set node = (level == 1) ? 'parent' : 'child' %}
           
           {# Children are nested in divs of parents #}
           {% if not loop.first %}
-            {% if comment.level > parent %}
+            {% if level > parent %}
               <div class="children">
-            {% elseif comment.level == parent %}
+            {% elseif level == parent %}
               </div>
             {% else %}
-              {% for i in 0..(parent - comment.level) %}</div>{% endfor %}
+              {% for i in 0..(parent - level) %}</div>{% endfor %}
             {% endif %}
           {% endif %}
-          {% set parent = comment.level %}
+          {% set parent = level %}
         
-          <div id="node-{{ loop.index }}" class="{{ node }}-{{ comment.level }}">
+          <div id="node-{{ loop.index }}" class="{{ node }}-{{ level }}">
             <hr>
             <div class="item-rank"><span class="glyphicon glyphicon-triangle-top"></span></div>
             <div class="item-text">
