@@ -3,40 +3,18 @@
 Website inspired by Y Combinator's [Hacker News](https://news.ycombinator.com/news). It connects with the official [Hacker News API](https://github.com/HackerNews/API).
 
 
-
 ## Requirements
 
-* Web server like Apache or Nginx
-
-* PHP >= 7.1
+* PHP &ge; 7.4
 
 * Composer
-
-  
 
 
 ## Installation
 
-1. Clone or download this repository to your web server.
+1. Clone or download this repository.
 
 2. Install the required packages with Composer.
 
-3. Configure your [web server](https://silex.symfony.com/doc/2.0/web_servers.html) to redirect all requests to `index.php` in the webroot.
+3. Start [PHP's built-in web server](https://www.php.net/manual/en/features.commandline.webserver.php), to test the installation.
 
-
-
-
-## Apache
-
-If you are using Apache, make sure `mod_rewrite` is enabled and use the following `.htaccess` file:
-
-```
-<IfModule mod_rewrite.c>
-    Options -MultiViews
-    RewriteEngine On
-    #RewriteBase /path/to/app
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [QSA,L]
-</IfModule>
-```
