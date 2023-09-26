@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8eb79a8260667e9f2d5cc8be06875014",
+    "content-hash": "06392f8c6566ec03ffbc447a787fe5fa",
     "packages": [
         {
             "name": "guzzlehttp/command",
@@ -2537,6 +2537,53 @@
             "time": "2023-08-24T13:38:36+00:00"
         },
         {
+            "name": "tomodomo/twig-pluralize-extension",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TomodomoCo/twig-pluralize-extension.git",
+                "reference": "aa9f41e621ef22f9b5558b7b16e1a5136eb2e2e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TomodomoCo/twig-pluralize-extension/zipball/aa9f41e621ef22f9b5558b7b16e1a5136eb2e2e0",
+                "reference": "aa9f41e621ef22f9b5558b7b16e1a5136eb2e2e0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "twig/twig": ">=v1.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tomodomo\\Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tomodomo",
+                    "homepage": "https://tomodomo.co/"
+                }
+            ],
+            "description": "Twig extension to output correctly pluralized strings",
+            "homepage": "https://tomodomo.co/",
+            "keywords": [
+                "plural",
+                "twig",
+                "twig extension"
+            ],
+            "support": {
+                "issues": "https://github.com/TomodomoCo/twig-pluralize-extension/issues",
+                "source": "https://github.com/TomodomoCo/twig-pluralize-extension/tree/master"
+            },
+            "time": "2018-11-16T13:47:49+00:00"
+        },
+        {
             "name": "twig/extensions",
             "version": "v1.5.4",
             "source": {
@@ -2675,54 +2722,6 @@
                 }
             ],
             "time": "2023-05-03T17:49:41+00:00"
-        },
-        {
-            "name": "vanpattenmedia/twig-pluralize-extension",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TomodomoCo/twig-pluralize-extension.git",
-                "reference": "fa2accda0dbb9789ca6f12b425149860ed12d7f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TomodomoCo/twig-pluralize-extension/zipball/fa2accda0dbb9789ca6f12b425149860ed12d7f3",
-                "reference": "fa2accda0dbb9789ca6f12b425149860ed12d7f3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "twig/twig": ">=v1.0.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "VanPattenMedia\\Twig\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Van Patten",
-                    "homepage": "http://www.chrisvanpatten.com/"
-                }
-            ],
-            "description": "Twig extension to output correctly pluralized strings",
-            "homepage": "https://www.vanpattenmedia.com/",
-            "keywords": [
-                "plural",
-                "twig",
-                "twig extension"
-            ],
-            "support": {
-                "issues": "https://github.com/TomodomoCo/twig-pluralize-extension/issues",
-                "source": "https://github.com/TomodomoCo/twig-pluralize-extension/tree/v1.0.2"
-            },
-            "abandoned": "tomodomo/twig-pluralize-extension",
-            "time": "2016-09-12T14:26:40+00:00"
         }
     ],
     "packages-dev": [],

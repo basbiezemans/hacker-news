@@ -15,7 +15,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), [
 // Twig globals and extensions
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     $twig->addGlobal('url', $_SERVER['REQUEST_URI']);
-    $twig->addExtension(new VanPattenMedia\Twig\Pluralize());
+    $twig->addExtension(new Tomodomo\Twig\Pluralize());
     $twig->addExtension(new Twig_Extensions_Extension_Date());
     return $twig;
 });
