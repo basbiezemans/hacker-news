@@ -28,7 +28,8 @@
             {% elseif level == parent %}
               </div>
             {% else %}
-              {% for i in 0..(parent - level) %}</div>{% endfor %}
+              {% set n = 2 * (parent - level) %}
+              {% for i in 0..n %}</div>{% endfor %}
             {% endif %}
           {% endif %}
           {% set parent = level %}
