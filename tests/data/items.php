@@ -1,0 +1,66 @@
+<?php
+
+return [
+    [   "by" => "sebg",
+        "descendants" => 37,
+        "id" => 2007,
+        "kids" => [5143, 3273],
+        "score" => 335,
+        "time" => 1701395625,
+        "title" => "Marker: Convert PDF to Markdown quickly with high accuracy",
+        "type" => "story",
+    ],
+    [   "by" => "mannycalavera42",
+        "id" => 5143,
+        "kids" => [5280],
+        "parent" => 2007,
+        "text" => "Let&#x27;s not underestimate the impact of such tool...",
+        "time" => 1701425557,
+        "type" => "comment"
+    ],
+    [   "by" => "samuell",
+        "id" => 5280,
+        "kids" => [5299],
+        "parent" => 5143,
+        "text" => "Yes, there is an enormous interest in this kind of thing, ...",
+        "time" => 1701426891,
+        "type" => "comment"
+    ],
+    [   "by" => "mannycalavera42",
+        "id" => 5299,
+        "parent" => 5280,
+        "text" => "Yeah, I know, but a lot of this content can be pretty ...",
+        "time" => 1701427065,
+        "type" => "comment"
+    ],
+    [   "by" => "lgats",
+        "id" => 3273,
+        "kids" => [4988, 4394],
+        "parent" => 2007,
+        "text" => "It&#x27;d be really great if there was something like this ...",
+        "time" => 1701406260,
+        "type" => "comment"
+    ],
+    [   "by" => "afandian",
+        "id" => 4988,
+        "kids" => [5411],
+        "parent" => 3273,
+        "text" => "My current workflow (for getting a magazine onto a website) ...",
+        "time" => 1701424073,
+        "type" => "comment"
+    ],
+    [   "by" => "prmoustache",
+        "id" => 4394,
+        "parent" => 3273,
+        "text" => "Especially for those that want to move out of Confluence.",
+        "time" => 1701418440,
+        "type" => "comment"
+    ],
+    [   "by" => "samuell",
+        "id" => 5411,
+        "parent" => 4988,
+        "text" => "Interesting! I tried it, but it seems to struggle with ...",
+        "time" => 1701428263,
+        "type" => "comment"
+    ]
+];
