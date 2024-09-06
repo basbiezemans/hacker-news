@@ -5,7 +5,7 @@ Website inspired by Y Combinator's [Hacker News](https://news.ycombinator.com/ne
 
 ## Requirements
 
-* PHP &ge; 7.4
+* PHP &ge; 8.1
 
 * Composer
 
