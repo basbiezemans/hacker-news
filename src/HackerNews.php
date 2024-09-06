@@ -33,10 +33,10 @@ class HackerNews
 
     public function stories($type, $limit = 30) {
         $getItem = fn($id) => $this->client->getItem($id);
-        return array_map($getItem, $this->getStoryIds($type, $limit));
+        return array_map($getItem, $this->storyIds($type, $limit));
     }
 
-    private function getStoryIds($type, $limit) {
+    private function storyIds($type, $limit) {
         $getStories = sprintf('get%sStories', story_type($type));
         return array_slice($this->client->$getStories(), 0, $limit);
     }
