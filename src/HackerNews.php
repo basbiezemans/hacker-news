@@ -5,24 +5,30 @@
 class HackerNews
 {
     private $client;
-    private $list = [];
 
     public function __construct($client) {
         $this->client = $client;
     }
 
     public function comments($story) {
-        $this->listFromTree($story);
-        return array_slice($this->list, 1); // omit the story
+        $comments = $this->traverse($story);
+        return array_slice($comments, 1); // omit the story
     }
 
-    private function listFromTree($node, $level = 0) {
-        $this->list[] = [$node, $level];
-        foreach ($node->getKids() as $id) {
-            $item = $this->client->getItem($id);
-            $dead = ($item->isDead() or $item->isDeleted());
-            !$dead and $this->listFromTree($item, $level + 1);
+    private function traverse($node) {
+        $stack = [[$node, 0]];
+        $list = [];
+        while (!empty($stack)) {
+            list($top, $level) = array_pop($stack);
+            $kids = $top->getKids();
+            foreach (array_reverse($kids) as $id) {
+                $item = $this->client->getItem($id);
+                $dead = ($item->isDead() or $item->isDeleted());
+                $dead or array_push($stack, [$item, $level + 1]);
+            }
+            $list[] = [$top, $level];
         }
+        return $list;
     }
 
     public function stories($type, $limit = 30) {
