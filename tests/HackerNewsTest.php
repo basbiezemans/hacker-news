@@ -8,7 +8,7 @@ class HackerNewsTest extends TestCase
     {
         $client = new HackerNewsClient();
         $story = $client->getItem(2007);
-        $have = (new HackerNews($client))->comments($story);
+        $have = (new HackerNewsWrapper($client))->comments($story);
         $want = [
             [5143, 1],
             [5280, 2],

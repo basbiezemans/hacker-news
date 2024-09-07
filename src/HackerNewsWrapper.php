@@ -1,8 +1,9 @@
 <?php
 
-// HackerNews class can convert a multidimensional tree of story
-// comments into an array. Each node can have any number of children.
-class HackerNews
+// HackerNewsWrapper class provides access to HN stories of any type and
+// can convert a multidimensional tree of story comments into an array.
+// Each comment node can have any number of children.
+class HackerNewsWrapper
 {
     private $client;
 
