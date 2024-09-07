@@ -24,8 +24,14 @@ class HackerNewsTest extends TestCase
 
 function id_lv_pair(array $pair): array
 {
+    return map_first($pair, fn($e) => $e->getId());
+}
+
+function map_first(array $pair, callable $f): array
+{
+    assert(count($pair) == 2);
     [$item, $level] = $pair;
-    return [$item->getId(), $level];
+    return [$f($item), $level];
 }
 
 // Mocked version of HackerNewsApi\Models\Item
