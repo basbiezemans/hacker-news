@@ -6,7 +6,7 @@ class HackerNewsTest extends TestCase
 {
     public function testStoryCommentsConvertedIntoArray(): void
     {
-        $client = new TestClient();
+        $client = new HackerNewsClient();
         $story = $client->getItem(2007);
         $have = (new HackerNews($client))->comments($story);
         $want = [
@@ -28,7 +28,8 @@ function id_lv_pair(array $pair): array
     return [$item->getId(), $level];
 }
 
-class TestItem
+// Mocked version of HackerNewsApi\Models\Item
+class Item
 {
     protected $item = [];
 
@@ -61,7 +62,8 @@ class TestItem
     }
 }
 
-class TestClient
+// Mocked version of HackerNewsApi\Client\HackerNewsClient
+class HackerNewsClient
 {
     private $items;
 
@@ -70,11 +72,11 @@ class TestClient
         $this->items = include 'data/items.php';
     }
 
-    public function getItem(int $id): TestItem
+    public function getItem(int $id): Item
     {
         foreach ($this->items as $item) {
             if ($item["id"] == $id) {
-                return new TestItem($item);
+                return new Item($item);
             }
         }
         throw new Exception("No item with id: $id");
