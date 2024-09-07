@@ -12,24 +12,19 @@ class HackerNewsWrapper
     }
 
     public function comments($story) {
-        $comments = $this->traverse($story);
-        return array_slice($comments, 1); // omit the story
-    }
-
-    private function traverse($node) {
-        $stack = [[$node, 0]];
-        $list = [];
+        $stack = [[$story, 0]];
+        $comments = [];
         while (!empty($stack)) {
-            list($top, $level) = array_pop($stack);
-            $kids = $top->getKids();
+            list($node, $level) = array_pop($stack);
+            $kids = $node->getKids();
             foreach (array_reverse($kids) as $id) {
                 $item = $this->client->getItem($id);
                 $dead = ($item->isDead() or $item->isDeleted());
                 $dead or array_push($stack, [$item, $level + 1]);
             }
-            $list[] = [$top, $level];
+            $comments[] = [$node, $level];
         }
-        return $list;
+        return array_slice($comments, 1); // omit the story
     }
 
     public function stories($type, $limit = 30) {
